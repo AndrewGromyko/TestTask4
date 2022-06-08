@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ApplicationUser>
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+<form method="post">
+    <div class="border backgroundWhite">
+        <div class="row">
+            <h2 class="text-info text-black">My users</h2>
+        </div>
+        <br/>
+        <div>
+            <button type="submit" class="btn btn-outline-warning" asp-action="Lock">
+                <i class="fa-solid fa-lock"></i></button>
+            <button type="submit" class="btn btn-outline-primary" asp-action="UnLock">
+                <i class="fa-solid fa-lock-open"></i></button>
+            <button type="submit" class="btn btn-outline-dark" asp-action="Delete">
+                <i class="fa-solid fa-trash"></i></button>
+        </div>
+        <br/>
+        <div>
+            <table class="table table-striped border rounded-3">
+                <tr class="table-secondary">
+                    <th><input class="form-check-input summary-check-box" type="checkbox" onchange="CheckAll();"></th>
+                <th>Id</th><th>Name</th><th>E-mail</th><th>Created</th><th>Last log in</th><th>Lock status</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <input class="form-check-input customer-check-box" name="selectedUsers" type="checkbox" onchange="Check();" id="@item.Id" value="@item.Id">
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.CreatedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.LoginDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.LockStatus)
+                    </td>
+                </tr>
+            }
+            </table>
+        </div>
+    </div>
+</form>
+

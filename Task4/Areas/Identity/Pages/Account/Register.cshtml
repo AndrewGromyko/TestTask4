@@ -1,0 +1,65 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<br />
+<h2>Create a new account</h2>
+<br />
+
+<form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+    <div class="border backgroundWhite w-50">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label asp-for="Input.Name" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Input.Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Input.Name" class="text-danger"></span>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label asp-for="Input.Email" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Input.Email" class="form-control" />
+            </div>
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label asp-for="Input.Password" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Input.Password" class="form-control" />
+            </div>
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label asp-for="Input.ConfirmPassword" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+            </div>
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="row mb-3">
+            <div class="col-5 offset-2">
+                <button type="submit" class="btn btn-primary form-control">Register</button>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-5 offset-2">
+                <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Log in</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
